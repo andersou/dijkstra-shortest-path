@@ -103,11 +103,11 @@ func (g *Grafo) Dijkstra() error {
 	return nil
 }
 
-func (g *Grafo) MenorCaminho(v *Vertice) int32 {
-	if v.estimativa == 0 {
-		return 0
+func (g *Grafo) MenorCaminho(v *Vertice) string {
+	if v.precedente == nil {
+		return fmt.Sprintf("%c", v.id)
 	}
-	return v.estimativa //+ g.MenorCaminho(v.precedente)
+	return fmt.Sprintf("%c -> ", v.id) + g.MenorCaminho(v.precedente) //+ g.MenorCaminho(v.precedente)
 }
 
 func (v *Vertice) String() string {
@@ -124,21 +124,33 @@ func (g *Grafo) String() string {
 
 func main() {
 	grafo := CriarGrafo(false)
+	//exemplo slides
 	a := grafo.AdicionarVertice()
 	b := grafo.AdicionarVertice()
 	c := grafo.AdicionarVertice()
 	d := grafo.AdicionarVertice()
+	e := grafo.AdicionarVertice()
+	f := grafo.AdicionarVertice()
+	//
 	grafo.AdicionarAresta(a, b, 2)
-	grafo.AdicionarAresta(a, c, 2)
+	grafo.AdicionarAresta(a, d, 1)
+	grafo.AdicionarAresta(a, c, 5)
+
+	grafo.AdicionarAresta(b, c, 3)
 	grafo.AdicionarAresta(b, d, 2)
+
 	grafo.AdicionarAresta(c, d, 3)
-	grafo.AdicionarAresta(c, b, 1)
+	grafo.AdicionarAresta(c, e, 1)
+	grafo.AdicionarAresta(c, f, 5)
+
+	grafo.AdicionarAresta(e, d, 1)
+	grafo.AdicionarAresta(e, f, 2)
 	//seleciono raiz do nodo
-	grafo.raiz = b
+	grafo.raiz = a
 	//rodo algoritmo de Dijkstra
 	grafo.Dijkstra()
 
 	fmt.Println(grafo)
 
-	fmt.Println("Menor caminho até nodo d é", grafo.MenorCaminho(d))
+	fmt.Println("Menor caminho até nodo f é ", f.estimativa, grafo.MenorCaminho(f))
 }
