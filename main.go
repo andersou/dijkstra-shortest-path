@@ -112,7 +112,7 @@ func (v *Vertice) String() string {
 	return fmt.Sprintf("%c [%s] : estimativa %d precedente %c\n", v.id, estadoStr[v.estado], v.estimativa, precedente)
 }
 func (g *Grafo) String() string {
-	return fmt.Sprintf("Raiz %s \n-> Arestas %d %v \n-> Vertices %d %v", g.raiz, len(g.arestas), g.arestas, len(g.vertices), g.vertices)
+	return fmt.Sprintf("Raiz %s \n-> Arestas %d \n-> Vertices %d\n %v", g.raiz, len(g.arestas), len(g.vertices), g.vertices)
 }
 
 func main() {
@@ -126,10 +126,12 @@ func main() {
 	grafo.AdicionarAresta(b, d, 2)
 	grafo.AdicionarAresta(c, d, 3)
 	grafo.AdicionarAresta(c, b, 1)
-
-	grafo.raiz = a
+	//seleciono raiz do nodo
+	grafo.raiz = b
+	//rodo algoritmo de Dijkstra
 	grafo.Dijkstra()
+
 	fmt.Println(grafo)
 
-	fmt.Println("Menor acminho até nodo d é", grafo.MenorCaminho(d))
+	fmt.Println("Menor caminho até nodo d é", grafo.MenorCaminho(d))
 }
