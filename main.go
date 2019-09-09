@@ -79,7 +79,7 @@ func (g *Grafo) fecharVertice(vertice *Vertice) {
 	}
 	vertice.estado = VerticeFechado
 }
-func (g *Grafo) RestaVerticeAberto() bool {
+func (g *Grafo) restaVerticeAberto() bool {
 	for _, v := range g.vertices {
 		if v.estado == VerticeAberto {
 			return true
@@ -93,7 +93,7 @@ func (g *Grafo) Dijkstra() error {
 	}
 	g.raiz.estimativa = 0
 	g.fecharVertice(g.raiz)
-	for g.RestaVerticeAberto() {
+	for g.restaVerticeAberto() {
 		for _, v := range g.vertices {
 			if v.precedente != nil && v.estado == VerticeAberto {
 				g.fecharVertice(v)
