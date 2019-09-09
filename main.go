@@ -32,14 +32,15 @@ type Aresta struct {
 }
 
 type Grafo struct {
+	dirigido bool
 	raiz     *Vertice
 	vertices []*Vertice
 	arestas  []*Aresta
 }
 
 //criar grafo grafo
-func CriarGrafo() (grafo *Grafo) {
-	grafo = &Grafo{}
+func CriarGrafo(dirigido bool) (grafo *Grafo) {
+	grafo = &Grafo{dirigido: dirigido}
 	return
 }
 
@@ -52,11 +53,17 @@ func (g *Grafo) AdicionarVertice() *Vertice {
 	g.vertices = append(g.vertices, v)
 	return v
 }
-func (g *Grafo) AdicionarAresta(v1 *Vertice, v2 *Vertice, peso int32) *Aresta {
+func (g *Grafo) AdicionarAresta(v1 *Vertice, v2 *Vertice, peso int32) {
 	a := &Aresta{id: ultimoAresta, entrada: v1, saida: v2, peso: peso}
+	if g.dirigido {
+
+		g.arestas = append(g.arestas, a)
+	} else {
+		b := &Aresta{id: ultimoAresta, entrada: v2, saida: v1, peso: peso}
+		g.arestas = append(g.arestas, a, b)
+
+	}
 	ultimoAresta++
-	g.arestas = append(g.arestas, a)
-	return a
 }
 
 func (g *Grafo) fecharVertice(vertice *Vertice) {
@@ -116,7 +123,7 @@ func (g *Grafo) String() string {
 }
 
 func main() {
-	grafo := CriarGrafo()
+	grafo := CriarGrafo(false)
 	a := grafo.AdicionarVertice()
 	b := grafo.AdicionarVertice()
 	c := grafo.AdicionarVertice()
