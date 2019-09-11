@@ -109,9 +109,9 @@ func (g *Grafo) Dijkstra() error {
 
 func (g *Grafo) MenorCaminho(v *Vertice) string {
 	if v.precedente == nil {
-		return fmt.Sprintf("%c", v.id)
+		return fmt.Sprintf("\x1b[101m\x1b[1m %c \x1b[0m", v.id)
 	}
-	return fmt.Sprintf("%c -> ", v.id) + g.MenorCaminho(v.precedente) //+ g.MenorCaminho(v.precedente)
+	return fmt.Sprintf("\x1b[101m\x1b[1m %c \x1b[0m -> ", v.id) + g.MenorCaminho(v.precedente) //+ g.MenorCaminho(v.precedente)
 }
 
 func (v *Vertice) String() string {

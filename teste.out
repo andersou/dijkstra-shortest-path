@@ -1,0 +1,32 @@
+[42m------------------------------[0m
+[42mDijkstra Grafo Generator 2000 [0m
+[42m------------------------------[0m
+
+É um grafo dirigido?[yes/no]
+Quantos vertices?
+
+Adicionando 6 vertices :
+a,b,c,d,e,f,
+
+Vamos adicionar as arestas!
+Basta digitar "[VerticeDeEntrada],[VerticeDeSaida],[Peso]"
+Exemplo: [35m"a,b,2"[0m (se o peso for 1, pode omitir)
+Para finalizar digite ok
+Rodando algoritmo de Dikstra
+Raiz a [fechado] : estimativa 0 precedente .
+ 
+-> Arestas 20 
+-> Vertices 6
+ [a [fechado] : estimativa 0 precedente .
+ b [fechado] : estimativa 2 precedente a
+ c [fechado] : estimativa 3 precedente e
+ d [fechado] : estimativa 1 precedente a
+ e [fechado] : estimativa 2 precedente d
+ f [fechado] : estimativa 4 precedente e
+]
+Tempo total: 0 ns
+
+
+Até qual vertice você quer saber o caminho?
+Para finalizar digite ok
+Até o nodo f a estimativa é de 4 - [101m[1m f [0m -> [101m[1m e [0m -> [101m[1m d [0m -> [101m[1m a [0m

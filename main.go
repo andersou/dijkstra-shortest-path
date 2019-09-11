@@ -12,10 +12,10 @@ import (
 func main() {
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("---------------------------")
-	fmt.Println("Dijkstra Grafo Generator 2000")
-	fmt.Println("---------------------------")
-	fmt.Print("É um grafo dirigido?[yes/no]")
+	fmt.Println("\x1b[42m------------------------------\x1b[0m")
+	fmt.Println("\x1b[42mDijkstra Grafo Generator 2000 \x1b[0m")
+	fmt.Println("\x1b[42m------------------------------\x1b[0m\n")
+	fmt.Print("É um grafo dirigido?[yes/no]\n")
 	resp, _, _ := reader.ReadLine()
 	var dirigido bool
 	if string(resp) == "yes" {
